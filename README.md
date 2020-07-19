@@ -3,7 +3,7 @@
 Doesn't have all the functionality yet but gets the job done.
 
 ### Basic Usage
-```
+``` C
 #include <stdio.h>
 #include "linkedlist.h"
 #include <string.h>
