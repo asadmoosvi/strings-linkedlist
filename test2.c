@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "linkedlist.h"
 
-#define LEN 1000000
+#define LEN 50000
 
 int main(int argc, char **argv)
 {
@@ -14,6 +14,7 @@ int main(int argc, char **argv)
     printf("\n");
 
     list_print(l);
+    list_destroy(l);
     return 0;
 }
 
