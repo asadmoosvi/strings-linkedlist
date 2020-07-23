@@ -7,6 +7,7 @@ typedef struct node node_t;
 
 struct list {
     node_t *head;
+    node_t *tail;
     size_t size;
 };
 

@@ -9,7 +9,6 @@ node_t *init_node(const char *data)
     node->data = malloc(strlen(data) + 1);
     strcpy(node->data, data);
     node->next = NULL;
-
     return node;
 }
 
@@ -26,8 +25,9 @@ list_t *init_list(void)
 {
     list_t *list = malloc(sizeof(list_t));
     list->head = NULL;
+    list->tail = NULL;
     list->size = 0;
-    
+
     return list;
 }
 
@@ -53,11 +53,15 @@ void list_push(list_t *list, const char *data)
     node_t *node = init_node(data);
     if (list->head == NULL) {
         list->head = node;
+        list->tail = node;
     } else {
-        node_t *node_ptr = list->head;
-        while (node_ptr->next != NULL)
-            node_ptr = node_ptr->next;
-        node_ptr->next = node;
+//        node_t *node_ptr = list->head;
+//        while (node_ptr->next != NULL)
+//            node_ptr = node_ptr->next;
+//        node_ptr->next = node;
+
+        list->tail->next = node;
+        list->tail = node;
     }
     (list->size)++;
 }
@@ -78,11 +82,11 @@ void list_pop(list_t *list, char *buf)
         if (node_ptr->next != NULL)
             last_node = node_ptr;
     }
-    
     strcpy(buf, node_ptr->data);
-    
-    // if last_node == node_ptr then theres only 1 item in the list
-    // that we deleted so we have to reset head to NULL
+
+  // if last_node == node_ptr then theres only 1 item in the list
+  // that we deleted so we have to reset head to NULL
+
     if (last_node == node_ptr) {
         destroy_node(node_ptr);
         list->head = NULL;

@@ -14,6 +14,14 @@ int main(int argc, char **argv)
     printf("\n");
 
     list_print(l);
+    size_t sz = l->size;
+    char popped_item[50];
+    for (size_t i = 0; i < sz; i++) {
+        list_pop(l, popped_item);
+        printf("Popped '%s'\n", popped_item);
+        printf("New size: %zu\n", l->size);
+    }
+
     list_destroy(l);
     return 0;
 }
