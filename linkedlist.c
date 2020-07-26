@@ -37,9 +37,6 @@ void list_destroy(list_t *list)
 
     while (node_ptr != NULL) {
         next_ptr = node_ptr->next;
-//        printf("freeing node: %p\n", node_ptr);
-//        printf("node data: %s\n", node_ptr->data);
-//        printf("node next: %p\n", node_ptr->next);
         destroy_node(node_ptr);
         node_ptr = next_ptr;
     }
