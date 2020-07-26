@@ -51,18 +51,8 @@ void list_destroy(list_t *list)
 void list_push(list_t *list, const char *data)
 {
     node_t *node = init_node(data);
-    if (list->head == NULL) {
-        list->head = node;
-        list->tail = node;
-    } else {
-//        node_t *node_ptr = list->head;
-//        while (node_ptr->next != NULL)
-//            node_ptr = node_ptr->next;
-//        node_ptr->next = node;
-
-        list->tail->next = node;
-        list->tail = node;
-    }
+    node->next = list->head;
+    list->head = node;
     (list->size)++;
 }
 
