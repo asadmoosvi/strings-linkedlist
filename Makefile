@@ -1,4 +1,4 @@
-all: test
+all: test test2
 
 test: test.o linkedlist.o
 	gcc -o test test.o linkedlist.o
