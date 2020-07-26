@@ -25,7 +25,6 @@ list_t *init_list(void)
 {
     list_t *list = malloc(sizeof(list_t));
     list->head = NULL;
-    list->tail = NULL;
     list->size = 0;
 
     return list;
@@ -64,26 +63,10 @@ void list_pop(list_t *list, char *buf)
         return;
     }
 
-    node_t *node_ptr = list->head;
-    node_t *last_node = node_ptr;
-
-    while (node_ptr->next != NULL) {
-        node_ptr = node_ptr->next;
-        if (node_ptr->next != NULL)
-            last_node = node_ptr;
-    }
-    strcpy(buf, node_ptr->data);
-
-  // if last_node == node_ptr then theres only 1 item in the list
-  // that we deleted so we have to reset head to NULL
-
-    if (last_node == node_ptr) {
-        destroy_node(node_ptr);
-        list->head = NULL;
-    } else {
-        destroy_node(node_ptr);
-        last_node->next = NULL;
-    }
+    node_t *popped = list->head;
+    strcpy(buf, popped->data);
+    list->head = popped->next;
+    destroy_node(popped);
 
     (list->size)--;
 }
