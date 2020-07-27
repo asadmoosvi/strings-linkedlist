@@ -1,6 +1,6 @@
 ## Simple Linked List for Strings in C
 
-Doesn't have all the functionality yet. It's a work in progress.
+Doesn't have all the functionality yet.
 
 ### Basic Usage
 ``` C
