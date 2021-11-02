@@ -1,3 +1,5 @@
+#include <stddef.h>
+
 struct node {
     char *data;
     struct node *next;
